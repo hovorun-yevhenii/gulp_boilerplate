@@ -3,12 +3,13 @@ const gulp = require('gulp'),
     browserSync = require('browser-sync'),
     concat = require('gulp-concat'),
     uglify = require('gulp-uglifyjs'),
-    autoprefixer = require('gulp-autoprefixer');
+    autoPrefix = require('gulp-autoprefixer'),
+    vendors = ['> 1%', 'last 2 versions', 'firefox >= 4', 'safari 7', 'safari 8', 'IE 8', 'IE 9', 'IE 10', 'IE 11'];
 
 gulp.task('css', () => {
     return gulp.src('src/css/style.scss')
         .pipe(sass())
-        .pipe(autoprefixer({browsers: ['last 1 version', 'iOS 6'], cascade: false}))
+        .pipe(autoPrefix({browsers: vendors, cascade: false}))
         .pipe(gulp.dest('src/dist'))
         .pipe(browserSync.reload({stream: true}));
 });

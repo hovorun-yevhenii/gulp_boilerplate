@@ -1,1 +1,1 @@
-console.log("hello");
+console.log("helper.js processed"),console.log("main.js processed");
